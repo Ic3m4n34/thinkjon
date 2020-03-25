@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Magnific Popup</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="jquery.magnific-popup.js"></script>
+  <link href="magnific-popup.css" rel="stylesheet">
+
+
+  <style>
+    .white-popup {
+      position: relative;
+      background: #FFF;
+      padding: 20px;
+      width: auto;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#test-popup" class="open-popup-link">Show inline popup</a>
+  <!--
+Alternative markup with data-mfp-src attribute:
+<a href="mobile-friendly-page.html" data-mfp-src="#test-popup" class="open-popup-link">Show inline popup</a>
+-->
+
+  <!-- Popup itself -->
+  <div id="test-popup" class="white-popup mfp-hide">
+    Popup content
+    <button class="dynamic">Dynamically create and show popup</button>
+  </div>
+
+  <script>
+    // Example 1: From an element in DOM
+    $('.open-popup-link').magnificPopup({
+      type: 'inline',
+      midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+    });
+
+    $('.dynamic').magnificPopup({
+      items: {
+        src: '<div class="white-popup"><img src="https://picsum.photos/500"></div>',
+        type: 'inline'
+      },
+      closeBtnInside: true
+    });
+
+    // Example: 2 Dynamically created
+    $('.dynamic').on('click', (event) => {
+      const parentPopupId = $(event.target).parents().first().attr('id');
+      const firstElementIndsidePopup = $('.mfp-content').children().first();
+      $(firstElementIndsidePopup).css('position', 'relative');
+
+      const hamburgerButton = '<button class="hamburger">Hamburger</button>';
+
+
+      $(firstElementIndsidePopup).prepend(hamburgerButton);
+      $('.hamburger').on('click', () => {
+        $.magnificPopup.close();
+        $(`.open-popup-link`).magnificPopup('open');
+      });
+    });
+  </script>
+</body>
+
+</html>
