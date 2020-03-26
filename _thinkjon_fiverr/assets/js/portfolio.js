@@ -10,27 +10,31 @@
           $('.parent-popup').on('click', (parentEvent) => {
             // get the parentTarget, so we can open the parent popup when the hamburger icon is clicked
             const parentTarget = $(`#${parentEvent.currentTarget.id}`);
+            console.log('parent', $(`#${parentEvent.currentTarget.id}`));
 
             // handle child popup click
             $('.open-popup').on('click', () => {
               const mfpContent = $('.mfp-content');
               mfpContent.css('position', 'relative');
 
-              // check if hamburger-menu-button already exists, if not: create it
-              if (!$('.hamburger').length) {
-                // create hamburger-icon button
-                const hamburgerButton = '<button class="hamburger"><img src="./assets/images/menu.png" alt="menu" /></button>';
-                // place the button in the popup
-                mfpContent.prepend(hamburgerButton);
-
-                $('.hamburger').on('click', () => {
-                  // close current popup
-                  $.magnificPopup.close();
-
-                  // open parent popup again
-                  parentTarget.magnificPopup('open');
-                });
+              // check if hamburger-menu-button already exists and remove it if it does
+              if ($('.hamburger').length) {
+                $('.hamburger').remove();
               }
+
+              // create hamburger-icon button
+              const hamburgerButton = '<button class="hamburger"><img src="./assets/images/menu.png" alt="menu" /></button>';
+              // place the button in the popup
+              mfpContent.prepend(hamburgerButton);
+
+              $('.hamburger').on('click', () => {
+                console.log('#', $(`#${parentEvent.currentTarget.id}`));
+                // close current popup
+                $.magnificPopup.close();
+
+                // open parent popup again
+                $(`#${parentEvent.currentTarget.id}`).magnificPopup('open');
+              });
             });
           });
 
