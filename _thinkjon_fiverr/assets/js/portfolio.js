@@ -8,18 +8,24 @@
 
           // handle popups
           $('.parent-popup').on('click', (parentEvent) => {
+            // get the parentTarget, so we can open the parent popup when the hamburger icon is clicked
             const parentTarget = $(`#${parentEvent.currentTarget.id}`);
 
-            $('.open-popup').on('click', (event) => {
+            $('.open-popup').on('click', () => {
               const mfpContent = $('.mfp-content');
-              console.log(mfpContent);
               mfpContent.css('position', 'relative');
 
+              // create hamburger-icon button
               const hamburgerButton = '<button class="hamburger"><img src="./assets/images/menu.png" alt="menu" /></button>';
+
+              // place the button in the popup
               mfpContent.prepend(hamburgerButton);
 
               $('.hamburger').on('click', () => {
+                // close current popup
                 $.magnificPopup.close();
+
+                // open parent popup again
                 parentTarget.magnificPopup('open');
               });
             });
