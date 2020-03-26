@@ -16,8 +16,15 @@
       background: #FFF;
       padding: 20px;
       width: auto;
-      max-width: 500px;
+      max-width: 60%;
       margin: 20px auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .thumb-image {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -31,8 +38,11 @@ Alternative markup with data-mfp-src attribute:
 
   <!-- Popup itself -->
   <div id="test-popup" class="white-popup mfp-hide">
-    Popup content
-    <button class="dynamic">Dynamically create and show popup</button>
+    <img class="thumb-image" src="https://picsum.photos/id/1/300">
+    <img class="thumb-image" src="https://picsum.photos/id/2/300">
+    <img class="thumb-image" src="https://picsum.photos/id/3/300">
+
+    <!-- <button class="dynamic">Dynamically create and show popup</button> -->
   </div>
 
   <script>
