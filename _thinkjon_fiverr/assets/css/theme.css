@@ -5852,7 +5852,7 @@ button::-moz-focus-inner {
 }
 
 .mfp-iframe-holder .mfp-close {
-  top: -40px;
+  top: -36px;
 }
 
 img.mfp-img {
@@ -13987,9 +13987,11 @@ table .price {
   background: rgba(101, 153, 183, 0.9);
   color: #ffffff;
   position: absolute;
-  top: 0;
+  top: 40px;
   left: 0;
   z-index: 1;
+  height: 36px;
+  width: 36px;
 }
 
 .hamburger:hover {
@@ -13997,5 +13999,9 @@ table .price {
 }
 
 .hamburger img {
-  width: 28px;
+  width: 24px;
+}
+
+.mfp-iframe-holder .hamburger {
+  top: -36px;
 }

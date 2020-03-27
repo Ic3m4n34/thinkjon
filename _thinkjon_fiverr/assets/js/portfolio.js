@@ -10,7 +10,6 @@
           $('.parent-popup').on('click', (parentEvent) => {
             // get the parentTarget, so we can open the parent popup when the hamburger icon is clicked
             const parentTarget = $(`#${parentEvent.currentTarget.id}`);
-            console.log('parent', $(`#${parentEvent.currentTarget.id}`));
 
             // handle child popup click
             $('.open-popup').on('click', () => {
@@ -28,12 +27,11 @@
               mfpContent.prepend(hamburgerButton);
 
               $('.hamburger').on('click', () => {
-                console.log('#', $(`#${parentEvent.currentTarget.id}`));
                 // close current popup
                 $.magnificPopup.close();
 
                 // open parent popup again
-                $(`#${parentEvent.currentTarget.id}`).magnificPopup('open');
+                parentTarget.magnificPopup('open');
               });
             });
           });
@@ -99,7 +97,7 @@
 
             // Presentation   Images of category
             $('#open-pres-rockvale').magnificPopup({
-                mainClass: 'mfp-fade',
+                // mainClass: 'mfp-fade', disables zoom effect for menu popups
                 items: [
                   /*
                   {
@@ -175,7 +173,7 @@
             })
 
             $('#open-pres-caresight').magnificPopup({
-                    mainClass: 'mfp-fade',
+                    // mainClass: 'mfp-fade', disables zoom effect for menu popups
                     items: [
                       /*
                       {
@@ -222,7 +220,7 @@
                 })
 
             $('#open-pres-amex').magnificPopup({
-                       mainClass: 'mfp-fade',
+                       // mainClass: 'mfp-fade', disables zoom effect for menu popups
                        items: [
                          /*
                          {
@@ -271,7 +269,7 @@
 
             // Whiteboard Animation   Images of category
             $('#open-whtbrd-gradguard').magnificPopup({
-                 mainClass: 'mfp-fade',
+                 // mainClass: 'mfp-fade', disables zoom effect for menu popups
                  items: [
                    /*
                    {
@@ -338,7 +336,7 @@
              })
 
             $('#open-whtbrd-caseclick').magnificPopup({
-                  mainClass: 'mfp-fade',
+                  // mainClass: 'mfp-fade', disables zoom effect for menu popups
                   items: [
                     /*
                     {
@@ -390,7 +388,7 @@
               })
 
             $('#open-whtbrd-upsn').magnificPopup({
-                    mainClass: 'mfp-fade',
+                    // mainClass: 'mfp-fade', disables zoom effect for menu popups
                     items: [
                       /*
                       {
@@ -444,7 +442,7 @@
 
             // Digital Signage   Images of category
             $('#open-ds-adreel').magnificPopup({
-                     mainClass: 'mfp-fade',
+                     // mainClass: 'mfp-fade', disables zoom effect for menu popups
                      items: [
                        /*
                        {
@@ -485,7 +483,7 @@
                  })
 
             $('#open-ds-menus').magnificPopup({
-                      mainClass: 'mfp-fade',
+                      // mainClass: 'mfp-fade', disables zoom effect for menu popups
                       items: [
                         /*
                         {
@@ -564,7 +562,7 @@
                   })
 
             $('#open-ds-promos').magnificPopup({
-                        mainClass: 'mfp-fade',
+                        // mainClass: 'mfp-fade', disables zoom effect for menu popups
                         items: [
                           /*
                           {
@@ -638,7 +636,7 @@
 
            // Popup with mixed content types
            $('#open-videos-images').magnificPopup({
-               mainClass: 'mfp-fade',
+               // mainClass: 'mfp-fade', disables zoom effect for menu popups
                items: [
                 {
                   src: 'https://www.youtube.com/watch?v=fj9CEMw162A',
@@ -677,7 +675,7 @@
 
            // Popup with mixed content types
            $('#open-digital-signage-videos').magnificPopup({
-               mainClass: 'mfp-fade',
+               // mainClass: 'mfp-fade', disables zoom effect for menu popups
                items: [
                  {
                    src: 'https://www.youtube.com/watch?v=7SxIQ3TunYs',
@@ -720,7 +718,7 @@
 
 
            $('#open-digital-signage-photos').magnificPopup({
-               mainClass: 'mfp-fade',
+               // mainClass: 'mfp-fade', disables zoom effect for menu popups
                items: [
                  /*
                  {
@@ -773,7 +771,7 @@
 
 /*
         $('#open-3box-iframe').magnificPopup({
-           mainClass: 'mfp-fade',
+           // mainClass: 'mfp-fade', disables zoom effect for menu popups
            items: [
              {
                src: 'digital-signage.html',
