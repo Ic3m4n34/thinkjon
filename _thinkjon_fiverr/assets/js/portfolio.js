@@ -6,10 +6,130 @@
  // https://codepen.io/dimsemenov/pen/hwIng
  * ======================================================================== */
 
+          // handle parent popups
+          function openParentPopup(id, withTranstion) {
+            if (id === 'presentation') {
+              if (withTranstion) {
+                console.log('trns');
+                $.magnificPopup.open({
+                  mainClass: 'mfp-fade',
+                  items: [
+                    {
+                      src: '#my-popup-pres', // CSS selector of an element on page that should be used as a popup
+                      type: 'inline'
+                    },
+                    {
+                      src: '#my-popup-pres', // 2nd one is to have the Next & Prev btns work
+                      type: 'inline'
+                    }
+                  ],
+                  gallery: {
+                    enabled: true
+                  },
+                  type: 'image', // this is a default type
+                });
+              } else {
+                console.log('here');
+                $.magnificPopup.open({
+                  items: [
+                    {
+                      src: '#my-popup-pres', // CSS selector of an element on page that should be used as a popup
+                      type: 'inline'
+                    },
+                    {
+                      src: '#my-popup-pres', // 2nd one is to have the Next & Prev btns work
+                      type: 'inline'
+                    }
+                  ],
+                  gallery: {
+                    enabled: true
+                  },
+                  type: 'image' // this is a default type
+                });
+              }
+            } else if (id === 'whiteboard') {
+              if (withTranstion) {
+                $.magnificPopup.open({
+                  mainClass: 'mfp-fade',
+                  items: [
+                    {
+                      src: '#my-popup-whtbrd', // CSS selector of an element on page that should be used as a popup
+                      type: 'inline'
+                    },
+                    {
+                      src: '#my-popup-whtbrd', // 2nd one is to have the Next & Prev btns work
+                      type: 'inline'
+                    }
+                  ],
+                  gallery: {
+                    enabled: true
+                  },
+                  type: 'image' // this is a default type
+                });
+              } else {
+                $.magnificPopup.open({
+                  items: [
+                    {
+                      src: '#my-popup-whtbrd', // CSS selector of an element on page that should be used as a popup
+                      type: 'inline'
+                    },
+                    {
+                      src: '#my-popup-whtbrd', // 2nd one is to have the Next & Prev btns work
+                      type: 'inline'
+                    }
+                  ],
+                  gallery: {
+                    enabled: true
+                  },
+                  type: 'image' // this is a default type
+                });
+              }
+            } else if (id === 'digitalsignage') {
+              if (withTranstion) {
+                $.magnificPopup.open({
+                  mainClass: 'mfp-fade',
+                  items: [
+                    {
+                      src: '#my-popup-ds', // CSS selector of an element on page that should be used as a popup
+                      type: 'inline'
+                    },
+                    {
+                      src: '#my-popup-ds', // 2nd one is to have the Next & Prev btns work
+                      type: 'inline'
+                    }
+                  ],
+                  gallery: {
+                    enabled: true
+                  },
+                  type: 'image' // this is a default type
+                });
+              } else {
+                $.magnificPopup.open({
+                  items: [
+                    {
+                      src: '#my-popup-ds', // CSS selector of an element on page that should be used as a popup
+                      type: 'inline'
+                    },
+                    {
+                      src: '#my-popup-ds', // 2nd one is to have the Next & Prev btns work
+                      type: 'inline'
+                    }
+                  ],
+                  gallery: {
+                    enabled: true
+                  },
+                  type: 'image' // this is a default type
+                });
+              }
+            }
+          };
+
           // handle popups
           $('.parent-popup').on('click', (parentEvent) => {
             // get the parentTarget, so we can open the parent popup when the hamburger icon is clicked
             const parentTarget = $(`#${parentEvent.currentTarget.id}`);
+
+            openParentPopup(parentEvent.currentTarget.id, true);
 
             // handle child popup click
             $('.open-popup').on('click', () => {
@@ -25,75 +145,22 @@
               const hamburgerButton = '<button class="hamburger"><img src="./assets/images/menu.png" alt="menu" /></button>';
               // place the button in the popup
               mfpContent.prepend(hamburgerButton);
+              $('.hamburger').css('opacity', '0');
+              $('.hamburger').animate({
+                opacity: 1
+              }, 1000);
+
 
               $('.hamburger').on('click', () => {
+                $.magnificPopup.defaults.zoom.easing = '';
                 // close current popup
                 $.magnificPopup.close();
 
                 // open parent popup again
-                parentTarget.magnificPopup('open');
+                openParentPopup(parentEvent.currentTarget.id, false);
               });
             });
           });
-
-
-          // Presentation  open-3inline-thmbs
-           $('#presentation').magnificPopup({
-               mainClass: 'mfp-fade',
-               items: [
-                 {
-                   src: '#my-popup-pres', // CSS selector of an element on page that should be used as a popup
-                   type: 'inline'
-                 },
-                 {
-                   src: '#my-popup-pres', // 2nd one is to have the Next & Prev btns work
-                   type: 'inline'
-                 }
-               ],
-               gallery: {
-                 enabled: true
-               },
-               type: 'image' // this is a default type
-           });
-
-           // Whiteboard Animations  open-3inline-thmbs
-            $('#whiteboard').magnificPopup({
-                mainClass: 'mfp-fade',
-                items: [
-                  {
-                    src: '#my-popup-whtbrd', // CSS selector of an element on page that should be used as a popup
-                    type: 'inline'
-                  },
-                  {
-                    src: '#my-popup-whtbrd', // 2nd one is to have the Next & Prev btns work
-                    type: 'inline'
-                  }
-                ],
-                gallery: {
-                  enabled: true
-                },
-                type: 'image' // this is a default type
-            });
-
-            // Digital Signage  open-3inline-thmbs
-             $('#digitalsignage').magnificPopup({
-                 mainClass: 'mfp-fade',
-                 items: [
-                   {
-                     src: '#my-popup-ds', // CSS selector of an element on page that should be used as a popup
-                     type: 'inline'
-                   },
-                   {
-                     src: '#my-popup-ds', // 2nd one is to have the Next & Prev btns work
-                     type: 'inline'
-                   }
-                 ],
-                 gallery: {
-                   enabled: true
-                 },
-                 type: 'image' // this is a default type
-             });
-
 
             // Presentation   Images of category
             $('#open-pres-rockvale').magnificPopup({
